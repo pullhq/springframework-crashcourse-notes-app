@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/commons::header">
-	<title>Notes App - Login Page</title>
+	<title>Notes App - Register</title>
 </head>
 <body>
 	<div class="ui container grid center aligned">
 		<div class="six wide column">
-			<h1 class="ui teal image header">Login</h1>
+			<h1 class="ui teal image header">Register</h1>
 			<form class="ui large form">
 				<div class="ui stacked segment">
 					<div class="field">
 						<div class="ui left icon input">
-							<i class="user icon"></i> <input type="text" name="email" placeholder="E-mail address">
+							<i class="user icon"></i> <input type="text" name="name" placeholder="Name">
+						</div>
+					</div>
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="envelope outline icon"></i> <input type="text" name="email" placeholder="E-mail address">
 						</div>
 					</div>
 					<div class="field">
@@ -19,12 +24,11 @@
 							<i class="lock icon"></i> <input type="password" name="password" placeholder="Password">
 						</div>
 					</div>
-					<div class="ui fluid large teal submit button">Login</div>
+					<div class="ui fluid large teal submit button">Signup</div>
 				</div>
 				<div class="ui error message"></div>
 			</form>
-			 <div class="ui message">Don't have an account then <a th:href="@{/signup}">Sign Up</a></div>
+			 <div class="ui message">Already registered <a th:href="@{/}">Login</a></div>
 		</div>
 	</div>
-</body>
 </html>
