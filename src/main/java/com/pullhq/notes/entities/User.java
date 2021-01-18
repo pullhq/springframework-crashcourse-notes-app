@@ -1,12 +1,14 @@
 package com.pullhq.notes.entities;
 
 import java.time.OffsetDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -43,6 +45,9 @@ public class User {
 	@NotNull
 	@Column(nullable = false)
 	private OffsetDateTime modifiedAt;
+	
+	@OneToMany(mappedBy="user")
+	private Set<Note> notes;
 
 	public UUID getId() {
 		return id;

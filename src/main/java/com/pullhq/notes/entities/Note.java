@@ -1,13 +1,18 @@
 package com.pullhq.notes.entities;
 
 import java.time.OffsetDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -33,6 +38,15 @@ public class Note {
 	@NotNull
 	@Column(nullable = false)
 	private OffsetDateTime modifiedAt;
+	
+	@ManyToOne
+	private User user;
+	
+	@ManyToMany
+	@JoinTable(name="note_tag", joinColumns = @JoinColumn(name="note_id"),
+				inverseJoinColumns = @JoinColumn(name="tag_id")
+			)
+	private Set<Tag> tags;
 
 	public UUID getId() {
 		return id;
